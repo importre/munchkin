@@ -4,8 +4,9 @@
 
 Android Finder
 
-- electron
-- react-photonkit
+- [electron]
+- [react-photonkit]
+- [adbkit]
 
 ![screenshot]
 
@@ -39,3 +40,6 @@ MIT © [Jaewe Heo][importre]
 
 [screenshot]: assets/screenshot.png
 [importre]: http://import.re
+[electron]: http://electron.atom.io
+[react-photonkit]: http://react-photonkit.github.io
+[adbkit]: https://github.com/openstf/adbkit
