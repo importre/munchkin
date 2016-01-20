@@ -23,7 +23,7 @@ class Header extends React.Component {
         dir: arg.dir,
         entries: arg.files
       })
-    }.bind(this));
+    });
   }
 
   onClickPrev() {

@@ -41,7 +41,7 @@ class Contents extends React.Component {
           }
         });
       }
-    }.bind(this));
+    });
   }
 
   onLoadFiles() {
@@ -74,7 +74,7 @@ class Contents extends React.Component {
           show: false
         }
       });
-    }.bind(this));
+    });
   }
 
   initSubj() {

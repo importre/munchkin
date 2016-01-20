@@ -25,7 +25,7 @@ class Footer extends React.Component {
         device: arg.device,
         currDir: arg.dir
       })
-    }.bind(this));
+    });
   }
 
   render() {
