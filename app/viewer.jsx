@@ -20,16 +20,20 @@ class Contents extends React.Component {
   }
 
   componentDidMount() {
-    this.initViewerSubj();
+    this.initSubj();
   }
 
-  initViewerSubj() {
-    this.props.viewerSubj.subscribe(params => {
-      if (params.show) {
+  initSubj() {
+    this.props.subj.subscribe(params => {
+      if (params.type != 'viewer') {
+        return;
+      }
+
+      if (params.data.show) {
         this.setState({
           display: 'display-show',
-          name: params.name,
-          data: params.data || params.error
+          name: params.data.name,
+          data: params.data.data || params.data.error
         });
       } else {
         this.setState({

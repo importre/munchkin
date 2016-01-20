@@ -9,19 +9,18 @@ import Sidebar from "./sidebar.jsx"
 import Contents from "./contents.jsx"
 import Viewer from "./viewer.jsx"
 
-const pathSubj = new Rx.Subject();
-const viewerSubj = new Rx.Subject();
+const subj = new Rx.Subject();
 
 require('../index.scss');
 
 ReactDom.render(
   <Window>
-    <Header pathSubj={pathSubj} />
+    <Header subj={subj} />
     <Content>
       <PaneGroup>
         <Sidebar />
-        <Contents viewerSubj={viewerSubj} pathSubj={pathSubj} />
-        <Viewer viewerSubj={viewerSubj} />
+        <Contents subj={subj} />
+        <Viewer subj={subj} />
       </PaneGroup>
     </Content>
     <Footer />

@@ -23,19 +23,19 @@ class Sidebar extends React.Component {
   }
 
   componentDidMount() {
-    ipcRenderer.on('on-add-device', function(event, arg) {
+    ipcRenderer.on('on-add-device', (event, arg) => {
       var devices = this.state.devices;
       devices[arg.id] = arg;
       this.setState({ devices: devices });
     }.bind(this));
 
-    ipcRenderer.on('on-change-device', function(event, arg) {
+    ipcRenderer.on('on-change-device', (event, arg) => {
       var devices = this.state.devices;
       devices[arg.id] = arg;
       this.setState({ devices: devices });
     }.bind(this));
 
-    ipcRenderer.on('on-remove-device', function(event, arg) {
+    ipcRenderer.on('on-remove-device', (event, arg) => {
       var devices = this.state.devices;
       delete devices[arg.id];
       this.setState({ devices: devices });

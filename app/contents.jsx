@@ -19,27 +19,33 @@ class Contents extends React.Component {
   }
 
   onLoadFile() {
-    ipcRenderer.on('on-load-file', function(event, arg) {
+    ipcRenderer.on('on-load-file', (event, arg) => {
       if (arg.error) {
-        this.props.viewerSubj.next({
-          name: arg.name,
-          show: true,
-          error: arg.error,
-          data: null
+        this.props.subj.next({
+          type: 'viewer',
+          data: {
+            name: arg.name,
+            show: true,
+            error: arg.error,
+            data: null
+          }
         });
       } else {
-        this.props.viewerSubj.next({
-          name: arg.name,
-          show: true,
-          error: null,
-          data: arg.data
+        this.props.subj.next({
+          type: 'viewer',
+          data: {
+            name: arg.name,
+            show: true,
+            error: null,
+            data: arg.data
+          }
         });
       }
     }.bind(this));
   }
 
   onLoadFiles() {
-    ipcRenderer.on('on-load-files', function(event, arg) {
+    ipcRenderer.on('on-load-files', (event, arg) => {
       var dirs = this.state.dirs;
       var pos = 0;
       if (arg.init) {
@@ -62,16 +68,25 @@ class Contents extends React.Component {
         pos: pos
       })
 
-      this.props.viewerSubj.next({ show: false });
+      this.props.subj.next({
+        type: 'viewer',
+        data: {
+          show: false
+        }
+      });
     }.bind(this));
   }
 
-  initPathSubj() {
-    this.props.pathSubj.subscribe(x => {
+  initSubj() {
+    this.props.subj.subscribe(params => {
+      if (params.type != 'nav') {
+        return;
+      }
+
       var pos;
-      if (x == 'prev') {
+      if (params.data == 'prev') {
         pos = this.state.pos - 1;
-      } else if (x == 'next') {
+      } else if (params.data == 'next') {
         pos = this.state.pos + 1;
       } else {
         pos = null;
@@ -90,7 +105,7 @@ class Contents extends React.Component {
   componentDidMount() {
     this.onLoadFiles();
     this.onLoadFile();
-    this.initPathSubj();
+    this.initSubj();
   }
 
   onClick(index) {

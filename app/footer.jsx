@@ -18,7 +18,7 @@ class Footer extends React.Component {
   }
 
   componentDidMount() {
-    ipcRenderer.on('on-load-files', function(event, arg) {
+    ipcRenderer.on('on-load-files', (event, arg) => {
       arg.dir
       this.setState({
         files: arg.files,

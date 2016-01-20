@@ -18,7 +18,7 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    ipcRenderer.on('on-load-files', function(event, arg) {
+    ipcRenderer.on('on-load-files', (event, arg) => {
       this.setState({
         dir: arg.dir,
         entries: arg.files
@@ -27,11 +27,17 @@ class Header extends React.Component {
   }
 
   onClickPrev() {
-    this.props.pathSubj.next('prev');
+    this.props.subj.next({
+      type: 'nav',
+      data: 'prev'
+    });
   }
 
   onClickNext() {
-    this.props.pathSubj.next('next');
+    this.props.subj.next({
+      type: 'nav',
+      data: 'next'
+    });
   }
 
   onClick(item) {
