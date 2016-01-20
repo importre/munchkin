@@ -88,7 +88,7 @@ const template = [{
   submenu: [{
     label: 'Learn More',
     click: function() {
-      require('shell').openExternal('https://github.com/importre/meow');
+      require('shell').openExternal('https://github.com/importre/munchkin');
     }
   },
 ]}];

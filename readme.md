@@ -1,6 +1,6 @@
-# meow
+# munchkin
 
-<img src='assets/meow.png' width=256 />
+<img src='assets/munchkin.png' width=256 />
 
 Android Finder
 

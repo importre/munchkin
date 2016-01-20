@@ -38,7 +38,7 @@ class Header extends React.Component {
     switch(item) {
       case 'github': this.openUrl('https://github.com/importre'); break;
       case 'facebook': this.openUrl('https://www.facebook.com/importre'); break;
-      case 'help': this.openUrl('https://github.com/importre/meow'); break;
+      case 'help': this.openUrl('https://github.com/importre/munchkin'); break;
     }
   }
 
