@@ -16,39 +16,39 @@ let mainWindow;
 var menu = Menu.buildFromTemplate(template);
 
 function onClosed() {
-	// dereference the window
-	// for multiple windows store them in an array
-	mainWindow = null;
+  // dereference the window
+  // for multiple windows store them in an array
+  mainWindow = null;
 }
 
 function createMainWindow() {
-	const is2nd = process.argv.indexOf('--2nd') >= 0;
-	var opts = {
-		width: 1200,
-		height: 600,
-		'min-height': 600,
-		'accept-first-mouse': true,
-		'title-bar-style': 'hidden'
-	};
+  const is2nd = process.argv.indexOf('--2nd') >= 0;
+  var opts = {
+    width: 1200,
+    height: 600,
+    'min-height': 600,
+    'accept-first-mouse': true,
+    'title-bar-style': 'hidden'
+  };
   if (is2nd) {
     setOptsForDualScreen(opts);
   }
 
-	const win = new BrowserWindow(opts);
-	if (process.env.DEV) {
-		win.loadURL('http://localhost:8000/dev.html');
-		win.openDevTools();
-	} else {
-		win.loadURL(`file://${__dirname}/index.html`);
-	}
-	win.on('closed', onClosed);
+  const win = new BrowserWindow(opts);
+  if (process.env.DEV) {
+    win.loadURL('http://localhost:8000/dev.html');
+    win.openDevTools();
+  } else {
+    win.loadURL(`file://${__dirname}/index.html`);
+  }
+  win.on('closed', onClosed);
 
-	if (menu) {
-		Menu.setApplicationMenu(menu);
-		menu = null;
-	}
+  if (menu) {
+    Menu.setApplicationMenu(menu);
+    menu = null;
+  }
 
-	return win;
+  return win;
 }
 
 function setOptsForDualScreen(opts) {
@@ -62,20 +62,20 @@ function setOptsForDualScreen(opts) {
 }
 
 app.on('window-all-closed', () => {
-	app.quit();
+  app.quit();
 });
 
 app.on('activate-with-no-open-windows', () => {
-	if (!mainWindow) {
-		mainWindow = createMainWindow();
-	}
+  if (!mainWindow) {
+    mainWindow = createMainWindow();
+  }
 });
 
 app.on('ready', () => {
-	mainWindow = createMainWindow();
+  mainWindow = createMainWindow();
 
-	if (process.env.DEV) {
-		const watcher = require('./scripts/watcher.js');
-		watcher.watch(app, ['./index.js', './scripts']);
-	}
+  if (process.env.DEV) {
+    const watcher = require('./scripts/watcher.js');
+    watcher.watch(app, ['./index.js', './scripts']);
+  }
 });

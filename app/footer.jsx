@@ -1,6 +1,5 @@
 import React from "react";
 import { Toolbar } from "react-photonkit";
-import pkg from "../package.json"
 import electron from 'electron';
 
 const ipcRenderer = electron.ipcRenderer;
@@ -19,7 +18,6 @@ class Footer extends React.Component {
 
   componentDidMount() {
     ipcRenderer.on('on-load-files', (event, arg) => {
-      arg.dir
       this.setState({
         files: arg.files,
         device: arg.device,
@@ -31,9 +29,9 @@ class Footer extends React.Component {
   render() {
     const size = this.state.files.length;
     const items = size > 1 ? 'items' : 'item';
-    const title = `${size} ${items}`
+    const title = `${size} ${items}`;
     return (
-      <Toolbar ptType="footer" title={title} />
+        <Toolbar ptType="footer" title={title}/>
     );
   }
 }

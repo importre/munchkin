@@ -34,43 +34,43 @@ const template = [{
     label: 'Select All',
     accelerator: 'CmdOrCtrl+A',
     role: 'selectall'
-  },
-]}, {
+  }]
+}, {
   label: 'View',
   submenu: [{
     label: 'Reload',
     accelerator: 'CmdOrCtrl+R',
-    click: function(item, focusedWindow) {
+    click: function (item, focusedWindow) {
       if (focusedWindow) {
         focusedWindow.reload();
       }
     }
   }, {
     label: 'Toggle Full Screen',
-    accelerator: (function() {
+    accelerator: (function () {
       if (process.platform == 'darwin')
-      return 'Ctrl+Command+F';
+        return 'Ctrl+Command+F';
       else
-      return 'F11';
+        return 'F11';
     })(),
-    click: function(item, focusedWindow) {
+    click: function (item, focusedWindow) {
       if (focusedWindow)
-      focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+        focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
     }
   }, {
     label: 'Toggle Developer Tools',
-    accelerator: (function() {
+    accelerator: (function () {
       if (process.platform == 'darwin')
-      return 'Alt+Command+I';
+        return 'Alt+Command+I';
       else
-      return 'Ctrl+Shift+I';
+        return 'Ctrl+Shift+I';
     })(),
-    click: function(item, focusedWindow) {
+    click: function (item, focusedWindow) {
       if (focusedWindow)
-      focusedWindow.toggleDevTools();
+        focusedWindow.toggleDevTools();
     }
-  },
-]}, {
+  }]
+}, {
   label: 'Window',
   role: 'window',
   submenu: [{
@@ -81,23 +81,23 @@ const template = [{
     label: 'Close',
     accelerator: 'CmdOrCtrl+W',
     role: 'close'
-  },
-]}, {
+  }]
+}, {
   label: 'Help',
   role: 'help',
   submenu: [{
     label: 'Learn More',
-    click: function() {
+    click: function () {
       require('shell').openExternal('https://github.com/importre/munchkin');
     }
-  },
-]}];
+  }]
+}];
 
 var darwinMenu = [{
   label: appName,
   submenu: [{
     label: 'About ' + app.getName(),
-    click: function(item, focusedWindow) {
+    click: function (item, focusedWindow) {
       var file = path.resolve(__dirname, 'assets/epp.png');
       var appIcon = NativeImage.createFromPath(file);
       dialog.showMessageBox(focusedWindow, {
@@ -123,7 +123,7 @@ var darwinMenu = [{
       app.quit();
     }
   }]
-}]
+}];
 
 var menu = template;
 if (process.platform == 'darwin') {

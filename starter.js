@@ -30,7 +30,7 @@ const server = net.createServer(function (c) {
     delete process.env.DEV;
   }
 
-  process.env.DEV = 1
+  process.env.DEV = 1;
   var cmd = win32 ? 'electron.cmd' : 'electron';
   child = spawn(cmd, getElectronArgs());
   child.stdout.on('data', function (data) {
@@ -50,8 +50,10 @@ const server = net.createServer(function (c) {
 
 server.listen(config.port, function (e) {
   const client = net.connect({port: config.port}, function () {
-    const args = ['--config', 'webpack.config.js', '--hot',
-            '--port', 8000, '--inline'];
+    const args = [
+      '--config', 'webpack.config.js',
+      '--hot', '--port', 8000, '--inline'
+    ];
     spawn('webpack-dev-server', args, {
       stdio: 'inherit'
     });

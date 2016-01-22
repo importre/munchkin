@@ -1,7 +1,6 @@
 'use strict';
 
 const fs = require('fs');
-const cp = require('child_process');
 const net = require('net');
 const config = require('../config');
 
@@ -27,7 +26,11 @@ function start(app) {
 }
 
 function watch(app, files) {
-  const opts = { persistent: true, recursive: true };
+  const opts = {
+    persistent: true,
+    recursive: true
+  };
+  
   files.forEach(file => {
     fs.watch(file, opts, function (event, filename) {
       start(app);

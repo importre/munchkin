@@ -127,7 +127,7 @@ class Contents extends React.Component {
   render() {
     const rows = this.state.files.map((entry, index) => {
       const glyph = !entry.isFile ? 'folder' : 'doc-text';
-      const icon = <Icon glyph={glyph} className="table-icon" />
+      const icon = <Icon glyph={glyph} className="table-icon" />;
       return (
         <tr key={index} onClick={this.onClick.bind(this, index)}>
           <td>{icon} {entry.name}</td>

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-import { Window, Content, PaneGroup ,Pane } from "react-photonkit";
+import { Window, Content, PaneGroup, Pane } from "react-photonkit";
 import Rx from 'rxjs/Rx';
 
 import Header from "./header.jsx"

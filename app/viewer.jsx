@@ -1,11 +1,8 @@
 import React from "react";
 import { Pane, Table, Icon } from "react-photonkit";
-import electron from 'electron';
 import pretty from 'pretty-bytes';
 import fs from 'fs';
 import path from 'path';
-
-const ipcRenderer = electron.ipcRenderer;
 
 export default
 class Contents extends React.Component {
