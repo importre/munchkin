@@ -12,16 +12,14 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dir: '',
-      entries: []
+      dir: ''
     }
   }
 
   componentDidMount() {
     ipcRenderer.on('on-load-files', (event, arg) => {
       this.setState({
-        dir: arg.dir,
-        entries: arg.files
+        dir: arg.dir
       })
     });
   }
