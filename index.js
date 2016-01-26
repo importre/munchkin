@@ -1,12 +1,14 @@
 'use strict';
-const app = require('app');
-const BrowserWindow = require('browser-window');
-const Menu = require('menu');
+
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
+const Menu = electron.Menu;
 const template = require('./scripts/menu');
 const adb = require('./scripts/adb');
 
 // report crashes to the Electron project
-require('crash-reporter').start();
+electron.crashReporter.start();
 
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
@@ -26,9 +28,9 @@ function createMainWindow() {
   var opts = {
     width: 1200,
     height: 600,
-    'min-height': 600,
-    'accept-first-mouse': true,
-    'title-bar-style': 'hidden'
+    minHeight: 600,
+    acceptFirstMouse: true,
+    titleBarStyle: 'hidden'
   };
   if (is2nd) {
     setOptsForDualScreen(opts);
@@ -52,7 +54,7 @@ function createMainWindow() {
 }
 
 function setOptsForDualScreen(opts) {
-  var atomScreen = require('screen');
+  var atomScreen = electron.screen;
   var displays = atomScreen.getAllDisplays();
   var d2 = displays.length > 1 ? displays[1] : null;
   if (d2) {

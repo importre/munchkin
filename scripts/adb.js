@@ -1,15 +1,15 @@
 'use strict';
 
-var Rx = require('rxjs/Rx');
-var adb = require('adbkit');
-var client = adb.createClient();
-var path = require('path');
-var fs = require('fs');
-var os = require('os');
-
+const Rx = require('rxjs/Rx');
+const adb = require('adbkit');
+const client = adb.createClient();
+const path = require('path');
+const fs = require('fs');
+const os = require('os');
 const ipcMain = require('electron').ipcMain;
+
 ipcMain.on('check-devices', function (event, arg) {
-  var devices = client.trackDevices();
+  const devices = client.trackDevices();
   Rx.Observable.fromPromise(devices)
       .subscribe(tracker => {
         tracker.on('add', device => {

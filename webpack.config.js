@@ -8,7 +8,7 @@ var options = {
     publicPath: 'out/',
     filename: 'app.js'
   },
-  target: "electron",
+  target: 'electron',
   module: {
     loaders: [
       {
@@ -43,13 +43,7 @@ var options = {
 
       {test: /\.json$/, loader: 'json-loader'}
     ]
-  },
-  plugins: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.ExternalsPlugin('commonjs', [
-      "electron"
-    ])
-  ]
+  }
 };
 
 module.exports = options;

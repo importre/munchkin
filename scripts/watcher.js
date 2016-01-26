@@ -30,7 +30,7 @@ function watch(app, files) {
     persistent: true,
     recursive: true
   };
-  
+
   files.forEach(file => {
     fs.watch(file, opts, function (event, filename) {
       start(app);

@@ -1,9 +1,10 @@
 'use strict';
 
-const app = require('app');
+const electron = require('electron');
+const app = electron.app;
+const dialog = electron.dialog;
+const nativeImage = electron.nativeImage;
 const path = require('path');
-const dialog = require('dialog');
-const NativeImage = require('native-image');
 
 const appName = app.getName();
 const template = [{
@@ -93,13 +94,13 @@ const template = [{
   }]
 }];
 
-var darwinMenu = [{
+const darwinMenu = [{
   label: appName,
   submenu: [{
     label: 'About ' + app.getName(),
     click: function (item, focusedWindow) {
-      var file = path.resolve(__dirname, 'assets/epp.png');
-      var appIcon = NativeImage.createFromPath(file);
+      const file = path.resolve(__dirname, 'assets/munchkin.png');
+      const appIcon = nativeImage.createFromPath(file);
       dialog.showMessageBox(focusedWindow, {
         'type': 'info',
         'title': app.getName(),
