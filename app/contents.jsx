@@ -46,35 +46,37 @@ class Contents extends React.Component {
 
   onLoadFiles() {
     ipcRenderer.on('on-load-files', (event, arg) => {
-      var dirs = this.state.dirs;
-      var pos = 0;
-      if (arg.init) {
-        dirs = [arg.dir];
-      } else {
-        pos = arg.pos;
-        if (pos >= 0) {
-          if (pos >= dirs.length) {
-            dirs.push(arg.dir);
-          } else {
-            dirs[pos] = arg.dir;
+      window.setTimeout(() => {
+        var dirs = this.state.dirs;
+        var pos = 0;
+        if (arg.init) {
+          dirs = [arg.dir];
+        } else {
+          pos = arg.pos;
+          if (pos >= 0) {
+            if (pos >= dirs.length) {
+              dirs.push(arg.dir);
+            } else {
+              dirs[pos] = arg.dir;
+            }
           }
         }
-      }
 
-      this.setState({
-        device: arg.device,
-        dirs: dirs,
-        files: arg.files,
-        pos: pos
-      });
+        this.setState({
+          device: arg.device,
+          dirs: dirs,
+          files: arg.files,
+          pos: pos
+        });
 
-      this.props.subj.next({
-        type: 'viewer',
-        data: {
-          show: false
-        }
+        this.props.subj.next({
+          type: 'viewer',
+          data: {
+            show: false
+          }
+        });
       });
-    });
+    }, 500);
   }
 
   initSubj() {
