@@ -20,7 +20,7 @@ class Header extends React.Component {
     ipcRenderer.on('on-load-files', (event, arg) => {
       this.setState({
         dir: arg.dir
-      })
+      });
     });
   }
 
