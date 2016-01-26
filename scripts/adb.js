@@ -18,8 +18,8 @@ ipcMain.on('check-devices', function (event, arg) {
 
         tracker.on('change', device => {
           event.sender.send('on-change-device', device);
-
         });
+
         tracker.on('remove', device => {
           event.sender.send('on-remove-device', device);
         });
