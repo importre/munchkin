@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var options = {
+module.exports = {
   entry: path.resolve(__dirname, 'app/app.jsx'),
   output: {
     path: path.resolve(__dirname, 'out'),
@@ -40,10 +40,9 @@ var options = {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url?limit=10000&mimetype=image/svg+xml'
       },
-
-      {test: /\.json$/, loader: 'json-loader'}
+      {
+        test: /\.json$/, loader: 'json-loader'
+      }
     ]
   }
 };
-
-module.exports = options;

@@ -66,7 +66,7 @@ class Contents extends React.Component {
         dirs: dirs,
         files: arg.files,
         pos: pos
-      })
+      });
 
       this.props.subj.next({
         type: 'viewer',
